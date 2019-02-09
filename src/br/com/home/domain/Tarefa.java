@@ -1,0 +1,60 @@
+package br.com.home.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Objects;
+
+public class Tarefa implements Serializable {
+    private int id;
+    private String descricao;
+    private boolean finalizado;
+    private Date datafinalizacao;
+
+    public Tarefa() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public boolean isFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
+    }
+
+    public Date getDatafinalizacao() {
+        return datafinalizacao;
+    }
+
+    public void setDatafinalizacao(Date datafinalizacao) {
+        this.datafinalizacao = datafinalizacao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tarefa tarefa = (Tarefa) o;
+        return id == tarefa.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+}
