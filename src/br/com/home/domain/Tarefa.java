@@ -1,11 +1,15 @@
 package br.com.home.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 public class Tarefa implements Serializable {
     private int id;
+    @NotNull(message = "{tarefa.descricao.vazia}")
+    @Size(min = 5, message = "{tarefa.descricao.pequena}")
     private String descricao;
     private boolean finalizado;
     private Date datafinalizacao;
