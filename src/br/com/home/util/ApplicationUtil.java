@@ -54,4 +54,11 @@ public class ApplicationUtil {
         }
         return new java.sql.Date(datafinalizacao.getTime());
     }
+
+    public static Date toDate(java.sql.Date sqldate) {
+        if (sqldate == null) {
+            return null;
+        }
+        return new Date(sqldate.getTime());
+    }
 }
