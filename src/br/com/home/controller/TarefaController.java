@@ -2,6 +2,7 @@ package br.com.home.controller;
 
 import br.com.home.TarefaDao;
 import br.com.home.domain.Tarefa;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.sql.Connection;
 
@@ -61,5 +63,12 @@ public class TarefaController {
         TarefaDao dao = new TarefaDao(connection);
         dao.altere(tarefa);
         return "forward:/tarefa/lista";
+    }
+
+    @RequestMapping("/finalizar")
+    public void finalize(Integer id, HttpServletResponse response) {
+        TarefaDao dao = new TarefaDao();
+        dao.finalize(id);
+        response.setStatus(HttpStatus.OK.value());
     }
 }

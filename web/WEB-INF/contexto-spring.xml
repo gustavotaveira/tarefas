@@ -15,6 +15,7 @@
        xmlns:context="http://www.springframework.org/schema/context">
 
     <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
     <context:component-scan base-package="br.com.home"/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

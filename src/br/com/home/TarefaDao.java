@@ -131,4 +131,17 @@ public class TarefaDao {
             e.printStackTrace();
         }
     }
+
+    public void finalize(Integer id) {
+        String sql = "UPDATE TAREFAS SET finalizado = ? WHERE id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setBoolean(1, true);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
