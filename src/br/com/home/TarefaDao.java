@@ -75,6 +75,7 @@ public class TarefaDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        Collections.sort(tarefas);
         return tarefas;
     }
 
@@ -133,11 +134,12 @@ public class TarefaDao {
     }
 
     public void finalize(Integer id) {
-        String sql = "UPDATE TAREFAS SET finalizado = ? WHERE id = ?";
+        String sql = "UPDATE TAREFAS SET finalizado = ?, datafinalizacao = ? WHERE id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setBoolean(1, true);
-            preparedStatement.setInt(2, id);
+            preparedStatement.setDate(2, ApplicationUtil.toSqlDate(new java.util.Date()));
+            preparedStatement.setInt(3, id);
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {

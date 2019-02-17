@@ -65,7 +65,7 @@ public class TarefaController {
         return "forward:/tarefa/lista";
     }
 
-    @RequestMapping("/finalizar")
+    @RequestMapping(value = "/finalizar", method = RequestMethod.POST)
     public void finalize(Integer id, HttpServletResponse response) {
         TarefaDao dao = new TarefaDao();
         dao.finalize(id);

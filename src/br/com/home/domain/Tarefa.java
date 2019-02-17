@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Tarefa implements Serializable {
+public class Tarefa implements Serializable, Comparable<Tarefa> {
     private int id;
     @NotNull(message = "{tarefa.descricao.vazia}")
     @Size(min = 5, message = "{tarefa.descricao.pequena}")
@@ -60,5 +60,16 @@ public class Tarefa implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public int compareTo(Tarefa o) {
+        if (this.getId() < o.getId()) {
+            return -1;
+        }
+        if (this.getId() > o.getId()) {
+            return 1;
+        }
+        return 0;
     }
 }
