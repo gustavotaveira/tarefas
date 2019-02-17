@@ -18,10 +18,8 @@
                 url: "/tarefas/tarefa/finalizar",
                 type: "POST",
                 data: {"id": id},
-                success: function () {
-                    $("#tarefa_" + id).html("Finalizado");
-                    $("#finaliza_" + id).html("");
-                    $("#datafinalizacao_" + id).html()
+                success: function (resposta) {
+                    $("#tarefa_" + id).html(resposta);
                 },
                 error: function () {
                     alert("Nao funfou");
@@ -31,7 +29,6 @@
     </script>
 </head>
 <body>
-<p id="joao"></p>
 <h2>Listagem de tarefas</h2>
 <table border="1">
     <thead>
@@ -47,10 +44,10 @@
     </thead>
     <tbody>
     <jstl-core:forEach items="${tarefas}" var="tarefa">
-        <tr>
+        <tr id="tarefa_${tarefa.id}">
             <td>${tarefa.id}</td>
             <td>${tarefa.descricao}</td>
-            <td id="tarefa_${tarefa.id}">
+            <td>
                 <jstl-core:choose>
                     <jstl-core:when test="${tarefa.finalizado}">
                         Finalizado
@@ -60,7 +57,7 @@
                     </jstl-core:otherwise>
                 </jstl-core:choose>
             </td>
-            <td id="datafinalizacao_${tarefa.id}">
+            <td>
                 <jstl-formatting:formatDate value="${tarefa.datafinalizacao}" pattern="dd/MM/yyyy"/>
             </td>
             <td>
@@ -69,7 +66,7 @@
             <td>
                 <a href="remove?id=${tarefa.id}">Excluir</a>
             </td>
-            <td id="finaliza_${tarefa.id}">
+            <td>
                 <jstl-core:if test="${tarefa.finalizado eq false}">
                     <a href="#" onclick="finaliza(${tarefa.id})">Finaliza agora</a>
                 </jstl-core:if>
