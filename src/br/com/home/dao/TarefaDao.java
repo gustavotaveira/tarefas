@@ -1,4 +1,4 @@
-package br.com.home;
+package br.com.home.dao;
 
 import br.com.home.domain.Tarefa;
 import br.com.home.domain.builder.TarefaBuilder;

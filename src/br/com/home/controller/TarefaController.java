@@ -1,6 +1,6 @@
 package br.com.home.controller;
 
-import br.com.home.TarefaDao;
+import br.com.home.dao.TarefaDao;
 import br.com.home.domain.Tarefa;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
