@@ -68,7 +68,7 @@
 </div>
 <div id="box-form">
     <section>
-        <form action="login" method="post">
+        <form action="${pageContext.request.contextPath}/login" method="post">
             Login:<input type="text" name="login"/>
             Senha:<input type="password" name="senha"/>
             <input type="submit" value="Entrar"/>

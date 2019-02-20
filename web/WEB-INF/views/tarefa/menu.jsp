@@ -15,6 +15,11 @@
             width: 500px;
             margin: 0 auto;
         }
+
+        #logout {
+
+        }
+
     </style>
 </head>
 <body>
@@ -22,6 +27,7 @@
     <h2>Pagina inicial</h2>
     <p>Seja bem-vindo ${usuarioLogado.login}</p>
     <p>Clique <a href="${pageContext.request.contextPath}/tarefa/lista">aqui</a> para acessar a listagem de tarefas</p>
+    <a id="logout" href="${pageContext.request.contextPath}/login/logout">Sair</a>
 </div>
 </body>
 </html>

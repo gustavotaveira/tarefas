@@ -12,7 +12,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String requestURI = request.getRequestURI();
-        if (requestURI.contains(LOGIN)) {
+        if (requestURI.contains(LOGIN) && !requestURI.contains("/login/menu")) {
             return true;
         }
         if (request.getSession().getAttribute("usuarioLogado") != null) {

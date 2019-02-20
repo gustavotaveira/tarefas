@@ -20,11 +20,12 @@
 <body>
 <div>
     <h2>Cadastre um novo usuario</h2>
-    <form action="cadastre" method="post">
+    <form action="${pageContext.request.contextPath}/login/cadastre" method="post">
         Login:<input type="text" name="login">
         Senha:<input type="password" name="senha">
         <input type="submit" value="Cadastrar">
     </form>
+    (
 </div>
 </body>
 </html>

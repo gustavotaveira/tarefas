@@ -22,9 +22,9 @@ public class LoginController {
         }
         if (new UsuarioDao().existeUsuario(usuario)) {
             session.setAttribute("usuarioLogado", usuario);
-            return "redirect:login/menu";
+            return "redirect: login/menu";
         }
-        return "redirect:login";
+        return "redirect: login";
     }
 
     @RequestMapping("/menu")
@@ -47,6 +47,12 @@ public class LoginController {
     public String novo(Usuario usuario, Model model) {
         new UsuarioDao().cadastreNovo(usuario);
         model.addAttribute("sucesso", true);
-        return login();
+        return "redirect: /tarefas/login";
+    }
+
+    @RequestMapping("logout")
+    public String logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        return "redirect: /tarefas/login";
     }
 }
