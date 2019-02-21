@@ -2,9 +2,11 @@ package br.com.home.dao;
 
 import br.com.home.domain.Tarefa;
 import br.com.home.domain.builder.TarefaBuilder;
-import br.com.home.infra.ConnectionDataBaseFactory;
 import br.com.home.util.ApplicationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,15 +15,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Repository
 public class TarefaDao {
+
     private Connection connection;
 
-    public TarefaDao() {
-        connection = ConnectionDataBaseFactory.getPostgreSQLConnection();
-    }
-
-    public TarefaDao(Connection connection) {
-        this.connection = connection;
+    @Autowired
+    public TarefaDao(DataSource dataSource) {
+        try {
+            this.connection = dataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void adicione(Tarefa tarefa) {
