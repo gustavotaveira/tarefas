@@ -1,17 +1,25 @@
 package br.com.home.domain;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity
 public class Tarefa implements Serializable, Comparable<Tarefa> {
+    @Id
+    @GeneratedValue
     private int id;
+
     @NotNull(message = "{tarefa.descricao.vazia}")
     @Size(min = 5, message = "{tarefa.descricao.pequena}")
     private String descricao;
+
     private boolean finalizado;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date datafinalizacao;
 
     public Tarefa() {
