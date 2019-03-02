@@ -80,4 +80,19 @@ public class Tarefa implements Serializable, Comparable<Tarefa> {
         }
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append("Tarefa [id=")
+                .append(this.id)
+                .append(", descricao=")
+                .append(this.descricao)
+                .append(", finalizado=")
+                .append(this.finalizado)
+                .append(", dataFinalizacao=")
+                .append(this.datafinalizacao)
+                .append("]")
+                .toString();
+    }
 }
