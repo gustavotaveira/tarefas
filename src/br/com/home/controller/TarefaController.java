@@ -3,20 +3,25 @@ package br.com.home.controller;
 import br.com.home.dao.TarefaDao;
 import br.com.home.domain.Tarefa;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+@Transactional
 @Controller
 @RequestMapping("/tarefa")
 public class TarefaController {
 
+
     @Autowired
-    private TarefaDao dao;
+    @Qualifier("jpaTarefaDao")
+    TarefaDao dao;
 
     @RequestMapping
     public String nova() {
